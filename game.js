@@ -4,15 +4,6 @@ let cells = [];
 let length = 10;
 let width = 0;
 
-// for(let i = 0; i < length**2; i++) {
-//     let cell = document.createElement('div');
-//     cell.classList.add('cell');
-    
-//     cell.style.flexBasis = `${width / length}px`;
-//     cells.push(cell);
-//     container.appendChild(cell);
-// }
-
 function setContainerWidth() {
     width = container.clientWidth;
     console.log(width);
@@ -36,21 +27,22 @@ function makeGrid() {
     for(let i = 0; i < length**2 ; i++) {
         let cell = document.createElement('div');
         cell.classList.add('cell')
-        // cell.style.width = `${width / length}px`;
         cell.style.width = `${(1/length)*100}%`;
         cells.push(cell);
         container.appendChild(cell);
     };
 }
 
-// function reloadGrid() {
-//     console.log('RELOAD GRID CALLED');
-//     removeGrid();
-//     makeGrid();
-// }
+container.addEventListener('mouseover', (event) => {
+    console.log('event triggered');
+    let target = event.target;
+    // let targetIndex = cells.findIndex(cell => cell === target);
+    // if(targetIndex) {
+    //     cells[targetIndex].style.backgroundColor = 'orange';
+    // }
+    if(cells.includes(target)) target.style.backgroundColor = 'orange';
+});
 
 makeGrid();
-
-// window.addEventListener('resize', reloadGrid);
 
 
