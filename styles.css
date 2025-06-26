@@ -7,11 +7,22 @@ html, body {
     height: 100%;
 }
 
-body {
+/* body {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+} */
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: centers;
+}
+
+.welcome-text {
+    text-align: center;
 }
 
 #container,
@@ -24,18 +35,15 @@ body {
 #container {
     display: flex;
     aspect-ratio: 1/1;
-    height: 100%;
-    width: auto;
-    flex-basis: 400px;
+    width: 40%;
+    height: auto;
     flex-wrap: wrap;
     border-color: blue;
     border-width: 3px;
     border-style: solid;
-
 }
 
 .cell {
-    flex-grow: 1;
     aspect-ratio: 1/1;
     border-width: 1px;
     border-color: red;
