@@ -1,0 +1,43 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#container,
+.cell {
+    border-style: solid;
+    padding: 0;
+    margin: 0;
+}
+
+#container {
+    display: flex;
+    aspect-ratio: 1/1;
+    height: 100%;
+    width: auto;
+    flex-basis: 400px;
+    flex-wrap: wrap;
+    border-color: blue;
+    border-width: 3px;
+    border-style: solid;
+
+}
+
+.cell {
+    flex-grow: 1;
+    aspect-ratio: 1/1;
+    border-width: 1px;
+    border-color: red;
+    border-style: solid;
+}
