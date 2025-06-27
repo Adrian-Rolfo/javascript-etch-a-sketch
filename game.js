@@ -3,9 +3,11 @@ const slider = document.querySelector('#slider');
 const resetBtn = document.querySelector('#reset-btn');
 const gridText = document.querySelector('#grid-text');
 const colorPicker = document.querySelector('#color-picker');
-const checkBox = document.querySelector('#random-color');
+const rndClrChkBox = document.querySelector('#random-color');
+const incOpcChkBox = document.querySelector('#opacity-toggle')
 
 let isRandClr = false;
+let isOpacityToggle = false;
 
 let cells = [];
 let length = 10;
@@ -37,6 +39,7 @@ function makeGrid() {
         let cell = document.createElement('div');
         cell.classList.add('cell')
         cell.style.width = `${(1/length)*100}%`;
+        cell.style.opacity = 0;
         cells.push(cell);
         container.appendChild(cell);
     };
@@ -76,7 +79,15 @@ function init() {
         if(isRandClr) randomizeColor();
         console.log('event triggered');
         let target = event.target;
-        if(cells.includes(target)) target.style.backgroundColor = color;
+        if(cells.includes(target)) {
+            if(isOpacityToggle) {
+                target.style.opacity = parseFloat(target.style.opacity) + 0.1;
+            }
+            else{
+                target.style.opacity = 1;
+            }
+            target.style.backgroundColor = color;
+        } 
     });
 
     // colorPicker.addEventListener
@@ -98,10 +109,14 @@ function init() {
         color = `${colorPicker.value}`;
     })
 
-    checkBox.addEventListener('change', () => {
+    rndClrChkBox.addEventListener('change', () => {
         isRandClr = !isRandClr;
         console.log(isRandClr);
         
+    })
+
+    incOpcChkBox.addEventListener('change', () => {
+        isOpacityToggle = !isOpacityToggle;
     })
 
     makeGrid();

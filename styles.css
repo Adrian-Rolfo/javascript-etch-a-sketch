@@ -30,7 +30,7 @@ body {
 
 #container,
 .cell {
-    border-style: solid;
+    /* border-style: solid; */
     padding: 0;
     margin: 0;
 }
@@ -44,13 +44,12 @@ body {
     border-color: blue;
     border-width: 3px;
     border-style: solid;
+    /* background-color: white; */
 }
 
 .cell {
     aspect-ratio: 1/1;
-    border-width: 1px;
-    border-color: red;
-    border-style: solid;
+    /* margin: 2px; */
 }
 
 #control-container {
@@ -61,6 +60,7 @@ body {
 
 #controls {
     display: flex;
+    flex-wrap: wrap;
 }
 
 
