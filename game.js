@@ -1,4 +1,5 @@
 const container = document.querySelector('#container');
+const slider = document.querySelector('#slider');
 
 let cells = [];
 let length = 10;
@@ -36,12 +37,19 @@ function makeGrid() {
 container.addEventListener('mouseover', (event) => {
     console.log('event triggered');
     let target = event.target;
-    // let targetIndex = cells.findIndex(cell => cell === target);
-    // if(targetIndex) {
-    //     cells[targetIndex].style.backgroundColor = 'orange';
-    // }
     if(cells.includes(target)) target.style.backgroundColor = 'orange';
 });
+
+
+//value updater through slider
+slider.oninput = function() {
+    length = this.value;
+    console.log(length);
+    removeGrid();
+    makeGrid();
+}
+
+
 
 makeGrid();
 
