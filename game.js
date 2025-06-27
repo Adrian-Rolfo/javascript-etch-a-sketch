@@ -1,5 +1,7 @@
 const container = document.querySelector('#container');
 const slider = document.querySelector('#slider');
+const resetBtn = document.querySelector('#reset-btn');
+const gridText = document.querySelector('#grid-text');
 
 let cells = [];
 let length = 10;
@@ -34,23 +36,64 @@ function makeGrid() {
     };
 }
 
+function resetGrid() {
+    removeGrid();
+    makeGrid();
+}
+
 container.addEventListener('mouseover', (event) => {
     console.log('event triggered');
     let target = event.target;
     if(cells.includes(target)) target.style.backgroundColor = 'orange';
 });
 
+resetBtn.addEventListener('click', resetGrid);
 
-//value updater through slider
-slider.oninput = function() {
-    length = this.value;
-    console.log(length);
-    removeGrid();
-    makeGrid();
+function updateSlider() {
+    const match = gridText.value.match(/^\d+/); // Match one or more digits at the start
+    if (match) {
+        slider.value = match[0];
+    }
 }
+
+
+function updateGridText() {
+    gridText.value = slider.value;
+}
+
+gridText.addEventListener('input', () => {
+    console.log('change event');
+    // length =  isNaN(parseInt(gridText.value)) ? 0 : parseInt(gridText.value);
+    if(isNaN(parseInt(gridText.value))) {
+        length = 0;
+    }
+    else {
+        length = parseInt(gridText.value);
+        updateSlider();
+    }
+
+
+    console.log(length);
+    // updateSlider();
+    resetGrid();
+})
+
+slider.addEventListener('input', () => {
+    length = parseInt(slider.value);
+    updateGridText();
+    resetGrid();
+})
+
+// //value updater through slider
+// slider.oninput = function() {
+//     length = this.value;
+//     // console.log(length);
+//     resetGrid();
+// }
 
 
 
 makeGrid();
+gridText.placeholder = 'Enter a number 1 - 100';
 
 
